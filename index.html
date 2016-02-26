@@ -3,18 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>Chat App</title>
-    <link charset="utf-8" href="/css/main.css" media="screen" rel="stylesheet" title="no title">
+    <link rel="stylesheet" href="normalize.css" media="screen" title="no title" charset="utf-8">
+    <link charset="utf-8" href="css/main.css" media="screen" rel="stylesheet" title="no title">
 </head>
 <body>
-    <section class ="user-section">
+    <section class ="username-section">
       <h1>
+        ChatApp
       </h1>
-      <form class="user-form" action="index.html" method="post">
-        <input type="text" name="user-name-input" value="" placeholder="Enter your username.">
-        <input type="button" name="submit-chat" value="">
+      <div class="all-forms-container">
+      <form class="username-input-form">
+        <input type="text" name="username-input" placeholder="Enter New Username">
+        <input type="submit" name="submit-new-username" value="Start Chatting">
       </form>
+      <form class ="signin-input-form">
+        <input type="text" name="sign-in-input" value="" placeholder="Sign in with existing username">
+        <input type="submit" name="submit-exisiting-username" value="Start Chatting">
+      </form>
+      </div>
     </section>
-    <section class="main">
+
+    <section class="main inactive">
         <div class="incoming">
             <textarea name="name" rows="8" cols="40"></textarea>
         </div>

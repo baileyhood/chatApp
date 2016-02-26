@@ -1,2 +1,27 @@
 body {
-  background-color: blue; }
+  box-sizing: none; }
+
+.inactive {
+  display: none; }
+
+.username-section {
+  margin: 0 auto;
+  width: 48%; }
+
+.username-section h1 {
+  text-align: center; }
+
+.username-section input[type=text] {
+  width: 100%;
+  text-align: center; }
+
+.username-section input[type=submit] {
+  width: 102%;
+  text-align: center; }
+
+.username-input-form {
+  display: inline-block;
+  margin-right: 7px; }
+
+.signin-input-form {
+  display: inline-block; }
