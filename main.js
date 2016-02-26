@@ -12,7 +12,7 @@ $(document).ready(function(){
 });//end of doc ready
 
 var chatApp = {
-  url: "http://tiny-tiny.herokuapp.com/collections/dbchat",
+  url: "http://tiny-tiny.herokuapp.com/collections/dbchatz",
   init: function () {
     chatApp.initEvents();
     chatApp.initStyling();
@@ -24,7 +24,7 @@ var chatApp = {
     $("section").on('click', '.delete', chatApp.deleteMessageFromDom);
   },
   initStyling: function() {
-
+    chatApp.getAllMessages();
   },
   getUsernameFromDom: function getUsernameFromDom() {
     var username = $('input[name="username-input"]').val();
@@ -77,10 +77,10 @@ var chatApp = {
   },
   addMsgToDom: function (data, templateStr, $target){
     var tmpl =_.template(templateStr);
-    $target.append(tmpl(data));
+    $target.prepend(tmpl(data));
   },
   deleteMessageFromDom: function(event){
-    var messageid = $(this).closest('div').data('messageid');
+    var messageid = $(this).closest('div').data('postid');
     chatApp.deleteMessages(messageid);
     chatApp.addAllMessages(chatApp.getMessages());
   },
@@ -91,14 +91,13 @@ var chatApp = {
       url: chatApp.url,
       method: 'GET',
       success: function (message) {
-        console.log (message);
         chatApp.addAllMessages (message);
       }
     });
   },
   addMessages: function addMesages(newMsg) {
     $.ajax ({
-      url: 'http://tiny-tiny.herokuapp.com/collections/dbchat',
+      url: 'http://tiny-tiny.herokuapp.com/collections/dbchatz',
       method: 'POST',
       data: newMsg,
       success: function (response) {
