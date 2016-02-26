@@ -1,8 +1,9 @@
 var templates = {
   msg: [
-    "<article data-idx='<%= idx %>'>",
+     "<div data-postid='<%= _id %>'>",
     "<p><%= content %></p>",
-      "<button class='delete'>delete</button>"
+      "<button class='delete'>delete</button>",
+    "</div>"
     ].join("")
 };
 
@@ -20,6 +21,7 @@ var chatApp = {
     $(".username-input-form").on('submit', chatApp.storingUserName);
     $(".signin-input-form").on('submit', chatApp.signingIn);
     $(".outcoming button").on('click', chatApp.sendMessage);
+    $("section").on('click', '.delete', chatApp.deleteMessageFromDom);
   },
   initStyling: function() {
 
@@ -64,13 +66,12 @@ var chatApp = {
   getMessages: function () {
     var content = $('input[name="outcoming-input"]').val();
     return {
-      content:content
+      content: content
     };
   },
-  addAllMessages: function (){
+  addAllMessages: function (chatsArr){
     $('.incoming').html('');
-  _.each(chatApp.getAllMessages(), function (el, idx){
-    el.idx = idx;
+  _.each(chatsArr, function (el){
     chatApp.addMsgToDom(el, templates.msg, $('.incoming'));
     });
   },
@@ -78,13 +79,20 @@ var chatApp = {
     var tmpl =_.template(templateStr);
     $target.append(tmpl(data));
   },
+  deleteMessageFromDom: function(event){
+    var messageid = $(this).closest('div').data('messageid');
+    chatApp.deleteMessages(messageid);
+    chatApp.addAllMessages(chatApp.getMessages());
+  },
+
+//AJAX
   getAllMessages: function getAllMessages(){
     $.ajax ({
       url: chatApp.url,
       method: 'GET',
       success: function (message) {
         console.log (message);
-        // chatApp.addAllMessages (message);
+        chatApp.addAllMessages (message);
       }
     });
   },
@@ -98,6 +106,18 @@ var chatApp = {
       },
       error: function (err) {
         console.log("error",err);
+      }
+    });
+  },
+  deleteMessages: function deleteMessages (messageid) {
+    $.ajax ({
+      url: chatApp.url + '/' + messageid,
+      method: 'DELETE',
+      success: function (response) {
+        chatApp.getAllMessages();
+      },
+      error: function (err) {
+        console.log ("error", err);
       }
     });
   },
