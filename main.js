@@ -15,7 +15,7 @@ var chatApp = {
   url: "http://tiny-tiny.herokuapp.com/collections/dbchatz",
   init: function () {
     chatApp.initEvents();
-    chatApp.initStyling();
+    chatApp.initStyling(); // this is loading messages in background
   },
   initEvents: function () {
     $(".username-input-form").on('submit', chatApp.storingUserName);
@@ -37,8 +37,13 @@ var chatApp = {
   storingUserName: function (event) {
     event.preventDefault();
     var newUsername = chatApp.getUsernameFromDom();
+    if (newUsername === "") {
+      alert("Type in your username!");
+    }
+    else {
     localStorage.setItem('username',newUsername);
     chatApp.hideHomePage();
+    }
   },
   signingIn: function (event) {
     event.preventDefault();
@@ -50,6 +55,7 @@ var chatApp = {
       $(this).text("Sorry, wrong username");
     }
   },
+  
   hideHomePage: function (event) {
     $(".username-section").addClass('inactive');
     $(".main").removeClass('inactive');
@@ -58,7 +64,7 @@ var chatApp = {
   sendMessage: function (event) {
      event.preventDefault();
      var newMsg = chatApp.getMessages();
-     chatApp.addMessages(newMsg);
+     chatApp.addMessagesToServer(newMsg);
      chatApp.addAllMessages(chatApp.getAllMessages());
      $('input').val('');
   },
@@ -78,6 +84,7 @@ var chatApp = {
   addMsgToDom: function (data, templateStr, $target){
     var tmpl =_.template(templateStr);
     $target.prepend(tmpl(data));
+    localStorage.getItem('username');
   },
   deleteMessageFromDom: function(event){
     var messageid = $(this).closest('div').data('postid');
@@ -95,7 +102,7 @@ var chatApp = {
       }
     });
   },
-  addMessages: function addMesages(newMsg) {
+  addMessagesToServer: function addMesages(newMsg) {
     $.ajax ({
       url: 'http://tiny-tiny.herokuapp.com/collections/dbchatz',
       method: 'POST',
