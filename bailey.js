@@ -10,8 +10,8 @@ var chatApp = {
     chatApp.initStyling();
   },
   initEvents: function () {
-    $(".username-input-form").on('submit', chatApp.storingUserName)
-    $(".signin-input-form").on('submit', chatApp.signingIn)
+    $(".username-input-form").on('submit', chatApp.storingUserName);
+    $(".signin-input-form").on('submit', chatApp.signingIn);
   },
   initStyling: function() {
 
@@ -44,4 +44,4 @@ var chatApp = {
     $(".username-section").addClass('inactive');
     $(".main").removeClass('inactive');
   },
-}//end of var chatApp
+};//end of var chatApp
