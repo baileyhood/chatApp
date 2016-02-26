@@ -59,35 +59,3 @@ $(document).ready(function(){
   });
 
 });
-
-
-
-
-
-
-
-
-/*$(document).ready(function(){
-  chatPage.init();
-});
-
-var chatPage= {
-  init: function() {
-    chatPage.styling();
-    chatPage.events();
-  },
-
-  styling: function(){
-    chatPage.addAllMessageToPage(msg, );
-  },
-
-  events: function(){
-
-  },
-
-  addAllMessageToPage: function() {
-     var tmpl = _.template(templates.msg);
-      tmpl(messages[0]);
-
-  }
-};*/
