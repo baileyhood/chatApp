@@ -19,20 +19,19 @@ var chatApp = {
   },
   initEvents: function () {
     $(".username-input-form").on('submit', chatApp.storingUserName);
-    $(".signin-input-form").on('submit', chatApp.signingIn);
     $(".outcoming button").on('click', chatApp.sendMessage);
     $("section").on('click', '.delete', chatApp.deleteMessageFromDom);
   },
   initStyling: function() {
     chatApp.getAllMessages();
   },
+
   getUsernameFromDom: function getUsernameFromDom() {
     var username = $('input[name="username-input"]').val();
     return username;
   },
-  getOldUsernameFromDom: function getOldUsernameFromDom (){
-    var username = $('input[name="sign-in-input"]').val();
-    return username;
+  getUsernameFromStorage: function () {
+    return localStorage.getItem ('username');
   },
   storingUserName: function (event) {
     event.preventDefault();
@@ -45,17 +44,7 @@ var chatApp = {
     chatApp.hideHomePage();
     }
   },
-  signingIn: function (event) {
-    event.preventDefault();
-    var oldUsername = chatApp.getOldUsernameFromDom();
-    if (oldUsername === localStorage.username) {
-    chatApp.hideHomePage();
-    }
-    else {
-      $(this).text("Sorry, wrong username");
-    }
-  },
-  
+
   hideHomePage: function (event) {
     $(".username-section").addClass('inactive');
     $(".main").removeClass('inactive');
@@ -71,8 +60,10 @@ var chatApp = {
 
   getMessages: function () {
     var content = $('input[name="outcoming-input"]').val();
+    var username = chatApp.getUsernameFromStorage();
     return {
-      content: content
+      content: content,
+      username: username
     };
   },
   addAllMessages: function (chatsArr){
@@ -93,6 +84,7 @@ var chatApp = {
   },
 
 //AJAX
+
   getAllMessages: function getAllMessages(){
     $.ajax ({
       url: chatApp.url,
