@@ -1,27 +1,74 @@
 body {
-  box-sizing: none; }
+  box-sizing: none;
+  font-family: 'Raleway', sans-serif;
+  background-color: #F1F1F1;
+  color: #4D4446; }
+
+h1 {
+  font-size: 3.1em;
+  margin-top: 0;
+  line-height: .9em;
+  color: #EC6F70; }
+
+h1 span {
+  font-size: .6em;
+  font-weight: 200;
+  color: #A9A6A8; }
 
 .inactive {
   display: none; }
 
 .username-section {
   margin: 0 auto;
-  width: 48%; }
+  width: 34%;
+  margin-top: 92px;
+  background: white;
+  padding: 39px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6);
+  box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6); }
 
 .username-section h1 {
   text-align: center; }
 
 .username-section input[type=text] {
-  width: 100%;
-  text-align: center; }
+  width: 98.5%;
+  text-align: center;
+  height: 48px;
+  color: #4D4446;
+  font-size: 1.3em; }
 
 .username-section input[type=submit] {
-  width: 102%;
-  text-align: center; }
+  width: 100%;
+  text-align: center;
+  background-color: #EC6F70;
+  border: 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: .85em;
+  margin: 10px 0px;
+  padding: 10px 0px; }
 
 .username-input-form {
   display: inline-block;
-  margin-right: 7px; }
+  margin-right: 7px;
+  width: 100%; }
 
 .signin-input-form {
   display: inline-block; }
+
+.main {
+  margin: 0 auto;
+  padding: 39px;
+  width: 50%;
+  background-color: white;
+  margin-top: 92px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6);
+  box-shadow: 0px 0px 10px 1px rgba(145, 145, 145, 0.6); }
+
+.incoming {
+  max-height: 345.594px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 18px 0px; }

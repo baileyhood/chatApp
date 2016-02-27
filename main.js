@@ -1,4 +1,5 @@
 var templates = {
+  
   msg: [
     "<div data-postid='<%= _id %>'rel='<%= username %>'>",
     "<p><%= content %></p>",
