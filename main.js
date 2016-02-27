@@ -2,7 +2,7 @@ var templates = {
   msg: [
     "<div data-postid='<%= _id %>'rel='<%= username %>'>",
     "<p><%= content %></p>",
-    "<p id ='idUsername'><%= username %></p>",
+    "<h4 id ='idUsername'><%= username %></h4>",
     "<button class='delete'>delete</button>",
     "</div>"
     ].join("")
@@ -14,6 +14,7 @@ return localStorage.getItem ('username');
 
 $(document).ready(function(){
   chatApp.init();
+  setInterval(function(){chatApp.getAllMessages();}, 1000);
 });//end of doc ready
 
 var chatApp = {
@@ -85,7 +86,8 @@ var chatApp = {
   deleteMessageFromDom: function(event){
     var messageid = $(this).closest('div').data('postid');
     var localStor =  localStorage.getItem ('username');
-    var divsUsername =  $('#idUsername').text();
+    var divsUsername =  $(this).siblings('h4').text();
+    console.log(divsUsername);
     if (localStor === divsUsername) {
     chatApp.deleteMessages(messageid);
     chatApp.addAllMessages(chatApp.getMessages());
