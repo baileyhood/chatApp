@@ -1,10 +1,15 @@
 var templates = {
   msg: [
-     "<div data-postid='<%= _id %>'>",
+    "<div data-postid='<%= _id %>'rel='<%= username %>'>",
     "<p><%= content %></p>",
-      "<button class='delete'>delete</button>",
+    "<p id ='idUsername'><%= username %></p>",
+    "<button class='delete'>delete</button>",
     "</div>"
     ].join("")
+};
+
+var localUserName = function () {
+return localStorage.getItem ('username');
 };
 
 $(document).ready(function(){
@@ -79,8 +84,12 @@ var chatApp = {
   },
   deleteMessageFromDom: function(event){
     var messageid = $(this).closest('div').data('postid');
+    var localStor =  localStorage.getItem ('username');
+    var divsUsername =  $('#idUsername').text();
+    if (localStor === divsUsername) {
     chatApp.deleteMessages(messageid);
     chatApp.addAllMessages(chatApp.getMessages());
+    }
   },
 
 //AJAX
