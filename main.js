@@ -1,9 +1,9 @@
 var templates = {
-  
+
   msg: [
     "<div data-postid='<%= _id %>'rel='<%= username %>'>",
-    "<p><%= content %></p>",
     "<h4 id ='idUsername'><%= username %></h4>",
+    "<p id = 'message'><%= content %></p>",
     "<button class='delete'>delete</button>",
     "</div>"
     ].join("")

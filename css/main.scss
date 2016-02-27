@@ -72,6 +72,15 @@ display: inline-block;
 .incoming {
   max-height: 345.594px;
   overflow-y:  scroll;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding: 18px 0px;
+}
+#idUsername {
+  font-weight: 400;
+  color: lightgrey;
+  display: inline-block;
+}
+#message {
+  font-weight: 200;
+  display: inline-block;
 }
