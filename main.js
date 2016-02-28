@@ -14,7 +14,7 @@ return localStorage.getItem ('username');
 
 $(document).ready(function(){
   chatApp.init();
-  // setInterval(function(){chatApp.getAllMessages();}, 1000);
+  setInterval(function(){chatApp.getAllMessages();}, 1000);
 });//end of doc ready
 
 var chatApp = {
@@ -105,6 +105,7 @@ var chatApp = {
   logout: function () {
     console.log ($(this));
     $('#logout').on('click', function () {
+      localStorage.clear();
       $('.main').addClass('inactive');
       $('.username-section').removeClass('inactive');
       $('input[name="username-input"]').val('');
