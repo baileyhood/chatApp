@@ -3,7 +3,7 @@ var templates = {
     "<div data-postid='<%= _id %>'rel='<%= username %>'>",
     "<h4 id ='idUsername'><%= username %></h4>",
     "<p id = 'message'><%= content %></p>",
-    "<button class='delete'>delete</button>",
+    "<button class='delete'>X</button>",
     "</div>"
     ].join("")
 };
@@ -111,6 +111,9 @@ var chatApp = {
       $('input[name="username-input"]').val('');
     });
   },
+  // scrollTop: function () {
+  //   $(".incoming").scrollTop($(".incoming")[0].scrollHeight);
+  // },
 
 //AJAX
 

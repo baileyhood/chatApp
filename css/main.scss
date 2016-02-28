@@ -64,7 +64,7 @@ display: inline-block;
   padding: 39px;
   width: 50%;
   background-color: white;
-  margin-top: 92px;
+  margin-top: 70px;
   border-top: 6px solid #DEDEDE;
   border-bottom: 6px solid #DEDEDE;
   -webkit-box-shadow: 0px 0px 10px 1px rgba(145,145,145,0.6);
@@ -90,6 +90,7 @@ display: inline-block;
   overflow-y:  scroll;
   // overflow-x: hidden;
   padding: 18px 0px;
+  padding-right: 10px;
 }
 #idUsername {
   font-weight: 400;
@@ -98,6 +99,7 @@ display: inline-block;
   vertical-align: top;
   margin-top: 16px;
   margin-right: 18px;
+  max-width: 18%;
 }
 #message {
   font-weight: 200;
@@ -108,6 +110,8 @@ display: inline-block;
 .delete {
   float: right;
   margin: 16px 0;
+  border: none;
+  background-color: white;
 }
 
 .logout-container {
