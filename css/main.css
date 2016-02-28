@@ -112,5 +112,8 @@ h1 span {
   float: left; }
 
 #logout {
-  color: #EC6F70;
-  float: right; }
+  color: white;
+  float: right;
+  background: #EC6F70;
+  padding: 3px 12px;
+  cursor: pointer; }

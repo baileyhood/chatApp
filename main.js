@@ -27,10 +27,10 @@ var chatApp = {
     $(".username-input-form").on('submit', chatApp.storingUserName);
     $(".outcoming button").on('click', chatApp.sendMessage);
     $("section").on('click', '.delete', chatApp.deleteMessageFromDom);
+    $('#logout').on('click', chatApp.logout);
   },
   initStyling: function() {
     chatApp.getAllMessages();
-    chatApp.displayCurrentUser();
   },
 
 //USERNAME FUNCTIONS
@@ -52,6 +52,7 @@ var chatApp = {
     localStorage.setItem('username',newUsername);
     chatApp.hideHomePage();
     }
+    chatApp.displayCurrentUser();
   },
 
   hideHomePage: function (event) {
@@ -100,6 +101,14 @@ var chatApp = {
   displayCurrentUser: function () {
     var localStor =  localStorage.getItem ('username');
     $('#displayUsername').html("Current Username: " + localStor);
+  },
+  logout: function () {
+    console.log ($(this));
+    $('#logout').on('click', function () {
+      $('.main').addClass('inactive');
+      $('.username-section').removeClass('inactive');
+      $('input[name="username-input"]').val('');
+    });
   },
 
 //AJAX
