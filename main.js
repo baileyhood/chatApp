@@ -1,5 +1,4 @@
 var templates = {
-
   msg: [
     "<div data-postid='<%= _id %>'rel='<%= username %>'>",
     "<h4 id ='idUsername'><%= username %></h4>",
@@ -15,7 +14,7 @@ return localStorage.getItem ('username');
 
 $(document).ready(function(){
   chatApp.init();
-  setInterval(function(){chatApp.getAllMessages();}, 1000);
+  // setInterval(function(){chatApp.getAllMessages();}, 1000);
 });//end of doc ready
 
 var chatApp = {
@@ -31,7 +30,10 @@ var chatApp = {
   },
   initStyling: function() {
     chatApp.getAllMessages();
+    chatApp.displayCurrentUser();
   },
+
+//USERNAME FUNCTIONS
 
   getUsernameFromDom: function getUsernameFromDom() {
     var username = $('input[name="username-input"]').val();
@@ -56,6 +58,8 @@ var chatApp = {
     $(".username-section").addClass('inactive');
     $(".main").removeClass('inactive');
   },
+
+//MESSAGING FUNCTIONS
 
   sendMessage: function (event) {
      event.preventDefault();
@@ -88,11 +92,14 @@ var chatApp = {
     var messageid = $(this).closest('div').data('postid');
     var localStor =  localStorage.getItem ('username');
     var divsUsername =  $(this).siblings('h4').text();
-    console.log(divsUsername);
     if (localStor === divsUsername) {
     chatApp.deleteMessages(messageid);
     chatApp.addAllMessages(chatApp.getMessages());
     }
+  },
+  displayCurrentUser: function () {
+    var localStor =  localStorage.getItem ('username');
+    $('#displayUsername').html("Current Username: " + localStor);
   },
 
 //AJAX
