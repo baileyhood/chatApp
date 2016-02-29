@@ -58,6 +58,7 @@ var chatApp = {
   hideHomePage: function (event) {
     $(".username-section").addClass('inactive');
     $(".main").removeClass('inactive');
+    $('.incoming').scrollTop($('.incoming')[0].scrollHeight);
   },
 
 //MESSAGING FUNCTIONS
@@ -82,7 +83,6 @@ var chatApp = {
     $('.incoming').html('');
   _.each(chatsArr, function (el){
     chatApp.addMsgToDom(el, templates.msg, $('.incoming'));
-    $('.incoming').scrollTop($('.incoming')[0].scrollHeight);
     });
   },
   addMsgToDom: function (data, templateStr, $target){
@@ -101,7 +101,7 @@ var chatApp = {
   },
   displayCurrentUser: function () {
     var localStor =  localStorage.getItem ('username');
-    $('#displayUsername').html("Current Username: " + localStor);
+    $('#displayUsername').html("<b>Current Username:</b> " + localStor);
   },
   logout: function () {
     console.log ($(this));
