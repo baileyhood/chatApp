@@ -84,6 +84,7 @@ var chatApp = {
   _.each(chatsArr, function (el){
     chatApp.addMsgToDom(el, templates.msg, $('.incoming'));
     });
+    $('.incoming').scrollTop($('.incoming')[0].scrollHeight);
   },
   addMsgToDom: function (data, templateStr, $target){
     var tmpl =_.template(templateStr);
